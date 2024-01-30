@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title></title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="css/style5.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <?php
+session_start();
+
+// Assuming you have stored the user type in the session during the login process
+if (isset($_SESSION["userType"])) {
+    $userType = $_SESSION["userType"];
+
+    switch ($userType) {
+        case "Company":
+            header("Location: company_dashboard.php");
+            exit();
+        case "Student":
+            header("Location: student_dashboard.php");
+            exit();
+        case "Faculty":
+            header("Location: faculty_dashboard.php");
+            exit();
+        default:
+            // Handle other user types if needed
+            break;
+    }
+}
+
+// Redirect to the login page if the user type is not set or recognized
+header("Location: login.php");
+exit();
+?>
+
+
+    <br><br><br>
+    <div class="categories-shop">
+        <div class="container">
+            <select name="" id="change_lang"  >
+                <option value="en" selected data-lang="lang_en">English</option>
+                <option value="ar" data-lang="lang_ar">Arabic</option>
+            </select>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="shop-cat-box">
+                        <img class="img-fluid" src="1.webp" alt="" />
+                        <a class="btn hvr-hover" href="company_login.php"  data-lang="company">Company</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="shop-cat-box">
+                        <img class="img-fluid" src="2.webp" alt="" />
+                        <a href="student_login.php" class="btn hvr-hover" data-lang="student" >Student</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="shop-cat-box">
+                        <img class="img-fluid" src="3.webp" alt="" />
+                        <a class="btn hvr-hover" href="faculty_login.php" data-lang="Faculty">Faculty</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+
+    <!-- End Categories -->
+	
+
+</body>
+
+</html>
